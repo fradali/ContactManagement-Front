@@ -1,0 +1,37 @@
+<div class="container spacer-top">
+  <div class="card">
+    <div class="card-header">
+      List of contacts
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label class="spacer-right">Mot Clé:</label>
+        <input type="text" [(ngModel)]="keywords"/>
+        <button class="btn btn-primary spacer-left" (click)="searchContact()">Search</button>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <th>Id Contact</th>
+          <th>Name</th>
+          <th>Birthday</th>
+          <th>Phone</th>
+        </tr>
+        <tr *ngFor="let contact of contacts?.content">
+          <td>{{contact.id}}</td>
+          <td>{{contact.firstName}}</td>
+          <td>{{contact.birthDate}}</td>
+          <td>{{contact.phone}}</td>
+          <td><a (click)="onEditContact(contact.id)" class="clickable">Edit</a></td>
+          <td><a (click)="onDeleteContact(contact)" class="clickable">Delete</a></td>
+        </tr>
+      </table>
+      <div class="container">
+        <ul class="nav nav-pills btn-group">
+          <li [ngClass]="{'active':i==page} " *ngFor="let p of pages; let i=index">
+            <a class="btn btn-primary spacer-right clickable" (click)="goToPage(i)">{{i}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+.spacer{
+  margin: 20px;
+}
+.spacer-top{
+  margin-top: 20px;
+}
+
+.spacer-left{
+  margin-left: 20px;
+}
+.spacer-right{
+  margin-right: 20px;
+}
+.clickable{
+  cursor: pointer;
+}

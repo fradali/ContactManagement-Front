@@ -1,0 +1,62 @@
+<div class="container spacer">
+  <div class="card" *ngIf="mode == 1">
+    <div class="card-header">New Contact</div>
+    <div class="card-body">
+      <div>
+        <div class="form-group">
+          <label class="spacer-right spacer-left">First Name:</label>
+          <input type="text" [(ngModel)]="contact.firstName"/>
+        </div>
+
+        <div class="form-group">
+          <label class="spacer-right spacer-left">Last Name:</label>
+          <input type="text" [(ngModel)]="contact.lastName"/>
+        </div>
+
+        <div class="form-group">
+          <label class="spacer-right spacer-left">Birth Date:</label>
+          <input type="date" [(ngModel)]="contact.birthDate"/>
+        </div>
+
+        <div class="form-group">
+          <label class="spacer-right spacer-left">Phone:</label>
+          <input type="number" [(ngModel)]="contact.phone"/>
+        </div>
+        <button class="btn btn-primary" (click)="editContact(contact)">save Contact</button>
+      </div>
+
+    </div>
+  </div>
+  <div class="card" *ngIf="mode == 2">
+    <div class="card-header">Contact</div>
+    <div class="card-body">
+      <div>
+        <div class="form-group">
+          <label class="spacer-right spacer-left">ID:</label>
+          <label>{{contact.id}}</label>
+        </div>
+        <div class="form-group">
+          <label class="spacer-right spacer-left">First Name:</label>
+          <label>{{contact.firstName}}</label>
+        </div>
+
+        <div class="form-group">
+          <label class="spacer-right spacer-left">Last Name:</label>
+          <label>{{contact.lastName}}</label>
+        </div>
+
+        <div class="form-group">
+          <label class="spacer-right spacer-left">Birth Date:</label>
+          <label>{{contact.birthDate | date: myformatDate}}</label>
+        </div>
+
+        <div class="form-group">
+          <label class="spacer-right spacer-left">Phone:</label>
+          <label>{{contact.phone}}</label>
+        </div>
+        <button class="btn btn-primary" (click)="mode == 1">add Contact</button>
+      </div>
+
+    </div>
+  </div>
+</div>
