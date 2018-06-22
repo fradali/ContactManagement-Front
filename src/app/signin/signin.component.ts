@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {first} from 'rxjs/operators';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AuthenticationService} from '../services/auth/authentication-service';
 import {AlertService} from '../services/alert/alert.service';
+import {LoginService} from '../services/auth/login.service';
 
 @Component({
   selector: 'app-signin',
@@ -15,13 +14,12 @@ export class SigninComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
-  returnUrl: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
-    private authenticationService: AuthenticationService,
+    private authenticationService: LoginService,
     private alertService: AlertService) {
   }
 
@@ -53,15 +51,18 @@ export class SigninComponent implements OnInit {
 
     this.loading = true;
     this.authenticationService.login(this.f.username.value, this.f.password.value)
-      .pipe(first())
       .subscribe(
         data => {
+          console.log('-------' + data + '-------');
           console.log('------- Go home -------');
+          // localStorage.setItem('token', data;
+
           this.router.navigate(['/home']);
         },
         error => {
           this.alertService.error(error);
           this.loading = false;
+          console.log('------- Go error -------   ' + JSON.stringify(error));
         });
   }
 

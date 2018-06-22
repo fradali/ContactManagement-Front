@@ -16,8 +16,8 @@ import {HomeComponent} from './home/home.component';
 import {SigninComponent} from './signin/signin.component';
 import {SignupComponent} from './signup/signup.component';
 import {AlertService} from './services/alert/alert.service';
-import {AuthenticationService} from './services/auth/authentication-service';
 import {UserService} from './services/user/user.service';
+import {LoginService} from './services/auth/login.service';
 
 
 const appRoutes: Routes = [
@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ContactService, AlertService, AuthenticationService, UserService],
+  providers: [ContactService, AlertService, LoginService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

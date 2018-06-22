@@ -8,12 +8,16 @@ import {Contact} from '../../models/contact.modal';
   providedIn: 'root'
 })
 export class ContactService {
+  token: string;
+  options: any;
+
 
   constructor(public http: HttpClient) {
   }
 
   getContacts(keyword: String, page: number, size: number): any {
-    return this.http.get('http://localhost:8090/searchContacts?keywords=' + keyword + '&size=' + size + '&page=' + page)
+    return this.http.get('http://localhost:8090/searchContacts?keywords=' + keyword + '&size=' + size + '&page=' + page
+      , {headers: this.getHeaders()})
       .pipe(
         map(resp => resp));
   }
@@ -48,4 +52,12 @@ export class ContactService {
         map(resp => resp));
   }
 
+  getHeaders(): any {
+    const headers = new Headers();
+    this.token = localStorage.getItem('token');
+    console.log('Auth Service token: ' + this.token);
+    headers.append('Content-Type', 'application/json');
+    headers.append('authentication', this.token);
+    return headers;
+  }
 }
