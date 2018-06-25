@@ -19,7 +19,7 @@
         <tr *ngFor="let contact of contacts?.content">
           <td>{{contact.id}}</td>
           <td>{{contact.firstName}}</td>
-          <td>{{contact.birthDate}}</td>
+          <td>{{contact.birthDate | date: 'dd/MM/yyyy'}}</td>
           <td>{{contact.phone}}</td>
           <td><a (click)="onEditContact(contact.id)" class="clickable">Edit</a></td>
           <td><a (click)="onDeleteContact(contact)" class="clickable">Delete</a></td>
